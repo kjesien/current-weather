@@ -19,3 +19,7 @@ body {
 
     @apply min-h-screen
 }
+
+.btn-primary {
+    @apply text-xs bg-blue-400 hover:bg-blue-500 text-white font-bold border border-blue-700 rounded py-1 px-2 my-1
+}
