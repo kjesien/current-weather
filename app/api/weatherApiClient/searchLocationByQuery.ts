@@ -50,7 +50,7 @@ export async function searchLocationByQuery(
   const data: LocationSearchResult = await res.json();
 
   return data.map(({ name, country, lat, lon }) => ({
-    label: `${name}, ${country}`,
+    label: `${name}, ${country}, ${lat}, ${lon}`,
     coordinates: {
       lat: lat.toString(),
       lon: lon.toString(),
