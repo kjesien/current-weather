@@ -33,4 +33,4 @@ npm run dev
 
 ## Deployment
 
-### Vercel was used to deploy the demo - [link](https://current-weather-rp3b.vercel.app/)
+### Vercel was used to deploy the demo - [link](https://current-weather-six.vercel.app/)
