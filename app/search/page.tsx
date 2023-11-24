@@ -21,18 +21,16 @@ export default async function Search({
 
   return (
     <main className="flex flex-col items-center justify-start">
-      <div>
-        <LocationSearch />
-        <ul className="list-disc pt-4">
-          {options.map(({ label, coordinates }, index) => (
-            <li key={`${label}${index}`}>
-              <Link href={`/weather?${new URLSearchParams(coordinates)}`}>
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <LocationSearch />
+      <ul className="list-disc pt-4">
+        {options.map(({ label, coordinates }, index) => (
+          <li key={`${label}${index}`}>
+            <Link href={`/weather?${new URLSearchParams(coordinates)}`}>
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

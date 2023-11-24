@@ -5,12 +5,10 @@ export default function Navigation() {
   return (
     <nav className="flex justify-between p-8">
       <Link href="/">
-        <div className="text-xl">Current Weather</div>
-        <div>Next.js showcase app</div>
+        <h1>Current Weather</h1>
+        <small>Next.js showcase app</small>
       </Link>
-      <div>
-        <Login />
-      </div>
+      <Login />
     </nav>
   );
 }
