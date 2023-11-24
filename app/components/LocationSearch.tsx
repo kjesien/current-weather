@@ -1,7 +1,6 @@
 "use client";
-import { type ChangeEventHandler, useState } from "react";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { type ChangeEventHandler, FormEvent, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import dynamic from "next/dynamic";
 
 const DetectLocationBtnDynamic = dynamic(
@@ -10,6 +9,7 @@ const DetectLocationBtnDynamic = dynamic(
 );
 
 export default function LocationSearch() {
+  const router = useRouter();
   const currentParams = useSearchParams();
   const [query, setQuery] = useState(currentParams.get("query") || "");
 
@@ -17,23 +17,29 @@ export default function LocationSearch() {
     event,
   ) => {
     const newQuery = event.target.value;
+    console.log(newQuery);
     setQuery(newQuery);
   };
 
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    router.push(`/search?${new URLSearchParams({ query })}`);
+  };
+
   return (
-    <div className="flex rounded-lg gap-1">
-      <input
-        type="text"
-        placeholder="Search for location"
-        value={query}
-        onChange={onSearchInputChanged}
-      />
-      <Link href={`/search?${new URLSearchParams({ query })}`}>
+    <div>
+      <form onSubmit={onSubmit} className="flex rounded-lg gap-1">
+        <input
+          type="text"
+          placeholder="Search for location"
+          value={query}
+          onChange={onSearchInputChanged}
+        />
         <button type="submit" className="btn" disabled={!query}>
           Search
         </button>
-      </Link>
-      <DetectLocationBtnDynamic />
+        <DetectLocationBtnDynamic />
+      </form>
     </div>
   );
 }
