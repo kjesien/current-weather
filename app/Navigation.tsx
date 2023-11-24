@@ -1,12 +1,13 @@
 import Login from "@/app/Login";
+import Link from "next/link";
 
 export default function Navigation() {
   return (
     <nav className="flex justify-between p-8">
-      <div>
+      <Link href="/">
         <div className="text-xl">Current Weather</div>
         <div>Next.js showcase app</div>
-      </div>
+      </Link>
       <div>
         <Login />
       </div>

@@ -1,62 +1,34 @@
 "use client";
-import { DebounceInput } from "react-debounce-input";
 import { type ChangeEventHandler, useState } from "react";
-import {
-  searchLocationByQuery,
-  SelectableLocation,
-} from "@/app/weather/weatherApiClient/searchLocationByQuery";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import DetectLocationBtn from "@/app/weather/DetectLocationBtn";
 
 export default function LocationSearch() {
-  const [options, setOptions] = useState<SelectableLocation[]>([]);
-  const [hasError, setHasError] = useState(false);
+  const currentParams = useSearchParams();
+  const [query, setQuery] = useState(currentParams.get("query") || "");
+
   const onSearchInputChanged: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
     const newQuery = event.target.value;
-    searchLocationByQuery(newQuery)
-      .then((options) => {
-        console.log("New options", options);
-        setOptions(options);
-        setHasError(false);
-      })
-      .catch((err) => {
-        console.log("Error", err);
-        setHasError(true);
-      });
-  };
-
-  const selectOption = (
-    selectedCoordinates: SelectableLocation["coordinates"],
-  ) => {
-    console.log("New location", selectedCoordinates);
+    setQuery(newQuery);
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <DebounceInput
-            debounceTimeout={400}
-            onChange={onSearchInputChanged}
-            placeholder="Search for location"
-          />
-        </div>
-        <div>Use location</div>
-      </div>
-      <div>
-        {hasError ? (
-          <div>Ups... Something went wrong. Please try again.</div>
-        ) : (
-          options.map(({ label, coordinates }, index) => (
-            <div
-              key={`${label}${index}`}
-              onSelect={() => selectOption(coordinates)}
-            >
-              {label}
-            </div>
-          ))
-        )}
-      </div>
+    <div className="flex rounded-lg gap-1">
+      <input
+        type="text"
+        placeholder="Search for location"
+        value={query}
+        onChange={onSearchInputChanged}
+      />
+      <Link href={`/weather/search?${new URLSearchParams({ query })}`}>
+        <button type="submit" className="btn" disabled={!query}>
+          Search
+        </button>
+      </Link>
+      <DetectLocationBtn />
     </div>
   );
 }

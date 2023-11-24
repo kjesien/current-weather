@@ -7,11 +7,7 @@ export default function SignAction({ session }: { session: Session | null }) {
   if (session) {
     return (
       <>
-        <button
-          onClick={() => signOut()}
-          type="button"
-          className="btn btn-primary"
-        >
+        <button onClick={() => signOut()} type="button" className="btn">
           Sign Out
         </button>
       </>
@@ -19,11 +15,7 @@ export default function SignAction({ session }: { session: Session | null }) {
   } else {
     return (
       <>
-        <button
-          onClick={() => signIn()}
-          type="button"
-          className="btn btn-primary"
-        >
+        <button onClick={() => signIn()} type="button" className="btn">
           Sign In
         </button>
       </>

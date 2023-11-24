@@ -6,7 +6,7 @@ export default async function Login() {
 
   return (
     <div className="flex flex-col items-end">
-      <div className="text-xl flex flex-row flex-wrap justify-end gap-1">
+      <div className="text-xl flex flex-row flex-wrap justify-end gap-1 pb-2">
         <span>Hello</span>
         <span className="whitespace-nowrap">
           {session?.user?.name || "Guest"}
