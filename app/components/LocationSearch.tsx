@@ -2,7 +2,12 @@
 import { type ChangeEventHandler, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import DetectLocationBtn from "@/app/components/DetectLocationBtn";
+import dynamic from "next/dynamic";
+
+const DetectLocationBtnDynamic = dynamic(
+  () => import("@/app/components/DetectLocationBtn"),
+  { ssr: false },
+);
 
 export default function LocationSearch() {
   const currentParams = useSearchParams();
@@ -28,7 +33,7 @@ export default function LocationSearch() {
           Search
         </button>
       </Link>
-      <DetectLocationBtn />
+      <DetectLocationBtnDynamic />
     </div>
   );
 }
