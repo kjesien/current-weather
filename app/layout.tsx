@@ -6,7 +6,7 @@ import Navigation from "@/app/components/navigation/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Weather App",
+  title: "Current Weather",
   description: "Created by kjesien",
 };
 
