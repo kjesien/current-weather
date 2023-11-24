@@ -5,7 +5,7 @@ const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOODLE_SECRET_KEY!,
+      clientSecret: process.env.GOOGLE_SECRET_KEY!,
     }),
   ],
   session: {

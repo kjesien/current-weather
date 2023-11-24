@@ -1,36 +1,36 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Main purpose of this project is to allow checking the current weather for given location.
+
+Used technologies/paradigms:
+- Server Side Rendering & Server Side Data Fetching
+- Data Caching
+- Google Authentication provided by [Next Auth](https://next-auth.js.org/)
+- Dynamic / lazy loaded components
+- Tailwind with SCSS preprocessor
+
 ## Getting Started
 
-First, run the development server:
-
+1. install the project dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create the `.env` file based on `.env.example` filling following environment variables:
+- GOOGLE_CLIENT_ID - your personal Google Client ID retrieved from [Google Cloud Console](https://console.cloud.google.com/)
+- GOOGLE_SECRET_KEY - your personal Google secret key retrieved from [Google Cloud Console](https://console.cloud.google.com/)
+- NEXTAUTH_URL - canonical URL of your site. For development run it's ok to use `http://localhost:3000`. When deploying to Vercel it can be skipped.
+- NEXTAUTH_SECRET - used to encrypt the NextAuth.js JWT. Easy way to generate good secret key is to run `openssl rand -base64 32` in terminal.
+- NEXT_PUBLIC_OPEN_WEATHER_API_KEY - API key retrieved from [Open Weather](https://openweathermap.org/).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Vercel was used to deploy the demo - [link](https://current-weather-rp3b.vercel.app/)
