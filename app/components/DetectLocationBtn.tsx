@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { ValidCoordinates } from "@/app/weatherApiClient/searchLocationByQuery";
+import { ValidCoordinates } from "@/app/weatherApiClient";
 import { useState } from "react";
 
 export default function DetectLocationBtn() {

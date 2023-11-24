@@ -1,7 +1,9 @@
-import { ValidCoordinates } from "@/app/weatherApiClient/searchLocationByQuery";
+import {
+  ValidCoordinates,
+  getCurrentWeatherData,
+} from "@/app/weatherApiClient";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { getCurrentWeatherData } from "@/app/weatherApiClient/getCurrentWeatherData";
 import Image from "next/image";
 
 export default async function Search({

@@ -2,7 +2,7 @@
 import { type ChangeEventHandler, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import DetectLocationBtn from "@/app/DetectLocationBtn";
+import DetectLocationBtn from "@/app/components/DetectLocationBtn";
 
 export default function LocationSearch() {
   const currentParams = useSearchParams();

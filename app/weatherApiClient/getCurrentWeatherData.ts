@@ -1,5 +1,5 @@
-import { getApiKey } from "@/app/weatherApiClient/utils";
-import { ValidCoordinates } from "@/app/weatherApiClient/searchLocationByQuery";
+import { getApiKey } from "./utils";
+import { ValidCoordinates } from "./searchLocationByQuery";
 
 export interface CurrentWeatherDataParameters {
   lat: string;

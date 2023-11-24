@@ -1,6 +1,6 @@
-import { searchLocationByQuery } from "@/app/weatherApiClient/searchLocationByQuery";
+import { searchLocationByQuery } from "@/app/weatherApiClient";
 import Link from "next/link";
-import LocationSearch from "@/app/LocationSearch";
+import LocationSearch from "@/app/components/LocationSearch";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 

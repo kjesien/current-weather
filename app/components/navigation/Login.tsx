@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import SignAction from "@/app/navigation/SignAction";
+import SignAction from "@/app/components/navigation/SignAction";
 
 export default async function Login() {
   const session = await getServerSession();
