@@ -36,3 +36,7 @@ input[type='text'] {
 .tooltip {
   @apply pointer-events-none absolute -top-8 left-0 w-max rounded bg-blue-800 px-2 py-1 text-sm font-medium text-gray-50 opacity-0 shadow transition-opacity group-hover:opacity-100
 }
+
+td {
+  @apply px-2
+}
