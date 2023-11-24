@@ -2,7 +2,7 @@
 import { type ChangeEventHandler, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import DetectLocationBtn from "@/app/weather/DetectLocationBtn";
+import DetectLocationBtn from "@/app/DetectLocationBtn";
 
 export default function LocationSearch() {
   const currentParams = useSearchParams();
@@ -23,7 +23,7 @@ export default function LocationSearch() {
         value={query}
         onChange={onSearchInputChanged}
       />
-      <Link href={`/weather/search?${new URLSearchParams({ query })}`}>
+      <Link href={`/search?${new URLSearchParams({ query })}`}>
         <button type="submit" className="btn" disabled={!query}>
           Search
         </button>

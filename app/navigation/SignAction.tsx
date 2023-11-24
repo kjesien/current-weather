@@ -15,7 +15,11 @@ export default function SignAction({ session }: { session: Session | null }) {
   } else {
     return (
       <>
-        <button onClick={() => signIn()} type="button" className="btn">
+        <button
+          onClick={() => signIn(undefined, { callbackUrl: "/" })}
+          type="button"
+          className="btn"
+        >
           Sign In
         </button>
       </>

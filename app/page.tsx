@@ -1,13 +1,17 @@
 import { getServerSession } from "next-auth";
-import LoggedIn from "@/app/LoggedIn";
-import NotLoggedIn from "@/app/NotLoggedIn";
+import { redirect } from "next/navigation";
+import LocationSearch from "@/app/LocationSearch";
 
 export default async function Home() {
   const session = await getServerSession();
 
-  if (session) {
-    return <LoggedIn />;
+  if (!session) {
+    redirect("/signIn");
   }
 
-  return <NotLoggedIn />;
+  return (
+    <main className="flex flex-col items-center">
+      <LocationSearch />
+    </main>
+  );
 }

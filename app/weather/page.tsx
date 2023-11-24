@@ -1,15 +1,15 @@
-import { ValidCoordinates } from "@/app/weather/weatherApiClient/searchLocationByQuery";
+import { ValidCoordinates } from "@/app/weatherApiClient/searchLocationByQuery";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 
 export default async function Search({
   searchParams,
 }: {
-  searchParams: ValidCoordinates;
+  searchParams?: ValidCoordinates;
 }) {
   const session = await getServerSession();
 
-  if (!session) {
+  if (!session || !searchParams) {
     redirect("/");
   }
 

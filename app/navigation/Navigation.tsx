@@ -1,4 +1,4 @@
-import Login from "@/app/Login";
+import Login from "@/app/navigation/Login";
 import Link from "next/link";
 
 export default function Navigation() {

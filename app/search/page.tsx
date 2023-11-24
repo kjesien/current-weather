@@ -1,6 +1,6 @@
-import { searchLocationByQuery } from "@/app/weather/weatherApiClient/searchLocationByQuery";
+import { searchLocationByQuery } from "@/app/weatherApiClient/searchLocationByQuery";
 import Link from "next/link";
-import LocationSearch from "@/app/weather/LocationSearch";
+import LocationSearch from "@/app/LocationSearch";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 
@@ -12,7 +12,7 @@ export default async function Search({
   const session = await getServerSession();
 
   if (!session) {
-    redirect("/");
+    redirect("/signin");
   }
 
   const options = searchParams.query
@@ -20,7 +20,7 @@ export default async function Search({
     : [];
 
   return (
-    <main className="flex flex-col items-center justify-start p-8">
+    <main className="flex flex-col items-center justify-start">
       <div>
         <LocationSearch />
         <ul className="list-disc pt-4">
