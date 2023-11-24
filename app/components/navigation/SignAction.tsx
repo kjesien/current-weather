@@ -6,23 +6,19 @@ import { Session } from "next-auth";
 export default function SignAction({ session }: { session: Session | null }) {
   if (session) {
     return (
-      <>
-        <button onClick={() => signOut()} type="button" className="btn">
-          Sign Out
-        </button>
-      </>
+      <button onClick={() => signOut()} type="button" className="btn">
+        Sign Out
+      </button>
     );
   } else {
     return (
-      <>
-        <button
-          onClick={() => signIn(undefined, { callbackUrl: "/" })}
-          type="button"
-          className="btn"
-        >
-          Sign In
-        </button>
-      </>
+      <button
+        onClick={() => signIn(undefined, { callbackUrl: "/" })}
+        type="button"
+        className="btn"
+      >
+        Sign In
+      </button>
     );
   }
 }
