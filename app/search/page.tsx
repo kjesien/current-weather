@@ -12,7 +12,7 @@ export default async function Search({
   const session = await getServerSession();
 
   if (!session) {
-    redirect("/signin");
+    redirect("/signIn");
   }
 
   const options = searchParams.query
