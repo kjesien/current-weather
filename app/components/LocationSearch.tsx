@@ -17,7 +17,6 @@ export default function LocationSearch() {
     event,
   ) => {
     const newQuery = event.target.value;
-    console.log(newQuery);
     setQuery(newQuery);
   };
 
