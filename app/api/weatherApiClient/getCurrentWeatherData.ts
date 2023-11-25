@@ -76,7 +76,7 @@ export async function getCurrentWeatherData({
       params,
     )}`,
     {
-      next: { revalidate: 30 * 60 }, //TODO Check
+      next: { revalidate: 30 * 60 }, // assuming new weather data arrives in 30 mins intervals
     },
   );
 

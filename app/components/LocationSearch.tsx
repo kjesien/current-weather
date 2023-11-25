@@ -1,45 +1,30 @@
 "use client";
 import { type ChangeEventHandler, useState } from "react";
 import dynamic from "next/dynamic";
-import { LocationData, ValidCoordinates } from "@/app/api/weatherApiClient";
+import { ValidCoordinates } from "@/app/api/weatherApiClient";
 import { DebounceInput } from "react-debounce-input";
 import Link from "next/link";
+import { useSearchLocations } from "@/app/hooks/searchLocations";
 
 const DetectLocationBtnDynamic = dynamic(
   () => import("@/app/components/DetectLocationBtn"),
   { ssr: false },
 );
 
-const searchLocations = async (query: string): Promise<LocationData[]> => {
-  const res = await fetch(
-    `/api/location-search?${new URLSearchParams({ query })}`,
-  );
-  return res.json();
-};
-
 export default function LocationSearch() {
   const [query, setQuery] = useState("");
-  const [searched, setSearched] = useState(false);
-  const [options, setOptions] = useState<LocationData[]>([]);
+
+  const { data: options, isLoading, error } = useSearchLocations(query);
 
   const onSearchInputChanged: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
     const newQuery = event.target.value;
-    if (!newQuery) {
-      setSearched(false);
-    }
-
-    if (newQuery) {
-      searchLocations(newQuery).then((locations) => {
-        setSearched(true);
-        setOptions(locations);
-      });
-    }
+    setQuery(newQuery);
   };
 
   return (
-    <div>
+    <div className="flex flex-col gap-1 items-center">
       <div className="flex gap-1 justify-center">
         <DebounceInput
           className="max-w-[200px]"
@@ -50,8 +35,16 @@ export default function LocationSearch() {
         />
         <DetectLocationBtnDynamic />
       </div>
-      {searched &&
-        (options.length ? (
+
+      {isLoading ? (
+        <span className="pt-4">Loading...</span>
+      ) : error ? (
+        <span className="pt-4 text-red-500 font-medium">
+          Something went wrong...
+        </span>
+      ) : (
+        query &&
+        (options?.length ? (
           <ul className="list-disc pt-4">
             {options.map((loc, index) => (
               <li key={`${loc.lat}${loc.lon}`} className="pt-2">
@@ -70,7 +63,8 @@ export default function LocationSearch() {
           </ul>
         ) : (
           <span className="pt-4">No results</span>
-        ))}
+        ))
+      )}
     </div>
   );
 }
