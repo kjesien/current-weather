@@ -36,19 +36,21 @@ export default async function Weather({
           <tr>
             <td>Conditions</td>
             <td>
-              <table className="table-auto">
+              <table className="table-auto table-nested">
                 <tbody>
                   {weatherData.weather.map((cond) => (
                     <tr key={cond.id}>
+                      <td>{cond.description}</td>
                       <td>
                         <Image
+                          className="border-2 border-blue-300 rounded"
                           src={`https://openweathermap.org/img/wn/${cond.icon}.png`}
                           alt={cond.main}
-                          width={50}
-                          height={50}
+                          aria-label={cond.main}
+                          width={35}
+                          height={35}
                         />
                       </td>
-                      <td>{cond.description}</td>
                     </tr>
                   ))}
                 </tbody>
