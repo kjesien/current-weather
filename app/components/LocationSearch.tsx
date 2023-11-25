@@ -46,7 +46,7 @@ export default function LocationSearch() {
         query &&
         (options?.length ? (
           <ul className="list-disc pt-4">
-            {options.map((loc, index) => (
+            {options.map((loc) => (
               <li key={`${loc.lat}${loc.lon}`} className="pt-2">
                 <Link
                   className="group relative w-max"
