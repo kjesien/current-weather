@@ -6,28 +6,21 @@ export interface LocationSearchParameters {
   limit?: string; //number
 }
 
-export type LocationSearchResult = Array<{
-  name: string;
-  local_names: Record<string, string>;
-  lat: number;
-  lon: number;
-  country: string;
-  state?: string;
-}>;
-
-export interface ValidCoordinates extends Record<string, string> {
+export interface ValidCoordinates {
   lat: string;
   lon: string;
 }
 
-export interface SelectableLocation {
-  label: string;
-  coordinates: ValidCoordinates;
+export interface LocationData extends ValidCoordinates {
+  name: string;
+  local_names: Record<string, string>;
+  country: string;
+  state: string;
 }
 
 export async function searchLocationByQuery(
   query: string,
-): Promise<SelectableLocation[]> {
+): Promise<LocationData[]> {
   const params = {
     appid: getApiKey(),
     q: query,
@@ -39,7 +32,7 @@ export async function searchLocationByQuery(
       params,
     )}`,
     {
-      next: { revalidate: 24 * 60 * 60 },
+      next: { revalidate: 24 * 60 * 60 }, // 24hrs
     },
   );
 
@@ -47,13 +40,5 @@ export async function searchLocationByQuery(
     throw new Error("Error occurred during data fetch");
   }
 
-  const data: LocationSearchResult = await res.json();
-
-  return data.map(({ name, country, lat, lon }) => ({
-    label: `${name}, ${country}, ${lat}, ${lon}`,
-    coordinates: {
-      lat: lat.toString(),
-      lon: lon.toString(),
-    },
-  }));
+  return await res.json();
 }

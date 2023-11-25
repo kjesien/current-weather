@@ -1,7 +1,7 @@
 import {
   ValidCoordinates,
   getCurrentWeatherData,
-} from "@/app/weatherApiClient";
+} from "@/app/api/weatherApiClient";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
