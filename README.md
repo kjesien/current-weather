@@ -8,6 +8,12 @@ Used technologies/paradigms:
 - Google Authentication provided by [Next Auth](https://next-auth.js.org/)
 - Dynamic / lazy loaded components
 - Tailwind with SCSS preprocessor
+- Redux 
+
+### Note on Redux
+Usage of it is totally not necessary. 
+
+For the current scope the whole functionality of displaying the weather data could be accomplished with pure SSR - which in general is more performant.   
 
 ## Getting Started
 
