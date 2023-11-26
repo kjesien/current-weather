@@ -6,6 +6,7 @@ Main purpose of this project is to allow checking the current weather for given 
 - Next.js
 - Server Side Rendering & Server Side Data Fetching
 - Data Caching
+- Secrets protection
 - Google Authentication provided by [Next Auth](https://next-auth.js.org/)
 - Dynamic / lazy loaded components
 - Tailwind with SCSS preprocessor
