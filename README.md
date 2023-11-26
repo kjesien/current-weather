@@ -9,6 +9,7 @@ Main purpose of this project is to allow checking the current weather for given 
 - Google Authentication provided by [Next Auth](https://next-auth.js.org/)
 - Dynamic / lazy loaded components
 - Tailwind with SCSS preprocessor
+- SWR
 - Redux 
 - Unit tests using Jest 
 
@@ -24,7 +25,7 @@ A better use for using Redux to store the data would be if the components design
 npm install
 ```
 
-2. Create the `.env` file based on `.env.example` filling following environment variables:
+2. Create the `.env.local` file based on `.env.example` filling following environment variables:
 - GOOGLE_CLIENT_ID - your personal Google Client ID retrieved from [Google Cloud Console](https://console.cloud.google.com/)
 - GOOGLE_SECRET_KEY - your personal Google secret key retrieved from [Google Cloud Console](https://console.cloud.google.com/)
 - NEXTAUTH_URL - canonical URL of your site. For development run it's ok to use `http://localhost:3000`. When deploying to Vercel it can be skipped.
