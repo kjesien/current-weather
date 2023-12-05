@@ -11,6 +11,7 @@ export default function StoreWeatherData({
 }: {
   weatherData: CurrentWeatherDataResponse;
 }) {
+  // dispatching outside of Context
   store.dispatch(setWeatherData(weatherData));
 
   return (
