@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
-import { useSelector } from "react-redux";
 import { selectWeatherState } from "@/app/weather/weatherSlice";
+import { useAppSelector } from "@/app/weather/store";
 
 export default function DataDisplay() {
-  const weatherData = useSelector(selectWeatherState);
+  const weatherData = useAppSelector(selectWeatherState);
 
   return (
     <main className="flex flex-col items-center justify-start p-8">
